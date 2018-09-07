@@ -1,0 +1,23 @@
+{
+  "name": "brmasker-ionic-3",
+  "version": "1.3.1",
+  "description": "mascara para inputs",
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
+  "scripts": {
+    "ngc": "ngc",
+    "build": "rm -rf aot dist && npm run ngc",
+    "submit": "npm run build && npm publish",
+    "submitGit": "git push --all && git push --tags && npm run build && npm publish"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amarkes/br-masker-ionic-3"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/amarkes/br-masker-ionic-3/issues"
+  }
+}
