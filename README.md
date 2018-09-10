@@ -106,6 +106,14 @@ import { BrMaskerModule } from 'br-mask';
 </ion-item>
 ```
 
+### Example for number thousand
+
+```html
+<ion-item>
+	<ion-input type="text" formControlName="phone" [value]="form.get('phone').value" name="phone" placeholder="Phone" [brmasker]="{form: form.get('phone'), numberAndTousand: true, thousand: ','}"></ion-input>
+</ion-item>
+```
+
 # Inputs
 
 * brmasker: BrMaskModel
@@ -124,6 +132,7 @@ import { BrMaskerModule } from 'br-mask';
   	decimalCaracter: string = `,`;
 	thousand: string;
 	userCaracters = false;
+	numberAndTousand: false
 	}
 ```
 
@@ -142,6 +151,7 @@ import { BrMaskerModule } from 'br-mask';
 | decimal | number | Optional default '2' |
 | thousand | string | Optional |
 | userCaracters | boolean | Optional default `false` |
+| numberAndTousand | boolean | Optional default `false` |
 
 
 
@@ -170,6 +180,10 @@ npm publish
 ```
 
 # Changelog
+
+### v0.0.2
+
+- add number thousand
 
 ### v0.0.1
 

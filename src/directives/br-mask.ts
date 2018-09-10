@@ -14,6 +14,8 @@ export class BrMaskModel {
   decimalCaracter: string = `,`;
   thousand: string;
   userCaracters: boolean = false;
+  numberAndTousand: boolean = false;
+
 }
 
 @Directive({
@@ -194,6 +196,9 @@ export class BrMaskDirective implements OnInit {
       if (this.brmasker.percent) {
         return this.percentMask(formValue);
       }
+      if (this.brmasker.numberAndTousand) {
+        return this.thousand(formValue);
+      }
       if (this.brmasker.userCaracters) {
         return this.usingSpecialCharacters(formValue, this.brmasker.mask, this.brmasker.len);
       }
@@ -347,6 +352,20 @@ export class BrMaskDirective implements OnInit {
       }
     }
     return NovoValorCampo;
+  }
+
+  /**
+  * Responsible formating number
+  * @author Antonio Marques <tmowna@gmail.com>
+  * @example <caption>this.thousand(string)</caption>
+  * @param {string} value
+  */
+  private thousand(value: string): string {
+    let val = value.replace(/\D/gi, '');
+    const reverse = val.toString().split('').reverse().join('');
+    const thousands = reverse.match(/\d{1,3}/g);
+    val = thousands.join(`${this.brmasker.thousand || '.'}`).split('').reverse().join('');
+    return val;
   }
 
   /**
