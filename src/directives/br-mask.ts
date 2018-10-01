@@ -364,8 +364,9 @@ export class BrMaskDirective implements OnInit {
     let val = value.replace(/\D/gi, '');
     const reverse = val.toString().split('').reverse().join('');
     const thousands = reverse.match(/\d{1,3}/g);
-    val = thousands.join(`${this.brmasker.thousand || '.'}`).split('').reverse().join('');
-    return val;
+    if (thousands) {
+      return thousands.join(`${this.brmasker.thousand || '.'}`).split('').reverse().join('');
+    }
   }
 
   /**

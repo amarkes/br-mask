@@ -181,6 +181,10 @@ npm publish
 
 # Changelog
 
+### 0.0.3
+
+- fix numberAndTousand
+
 ### v0.0.2
 
 - add number thousand
