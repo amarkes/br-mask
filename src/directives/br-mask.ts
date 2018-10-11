@@ -7,6 +7,7 @@ export class BrMaskModel {
   len: number;
   person: boolean;
   phone: boolean;
+  phoneNotDDD: boolean;
   money: boolean;
   percent: boolean;
   type: 'alfa' | 'num' | 'all' = 'alfa';
@@ -99,6 +100,9 @@ export class BrMaskDirective implements OnInit {
     if (value && config.phone) {
       return value.replace(/^(?:(?:\+|00)?(55)\s?)?(?:\(?([1-9][0-9])\)?\s?)?(?:((?:9\d|[2-9])\d{3})\-?(\d{4}))$/gi, '$1 ($2) $3-$4');
     }
+    if (value && config.phoneNotDDD) {
+      return this.phoneNotDDDMask(value);
+    }
     if (value && config.money) {
       return this.writeValueMoney(value, config);
     }
@@ -190,6 +194,9 @@ export class BrMaskDirective implements OnInit {
       if (this.brmasker.phone) {
         return this.phoneMask(formValue);
       }
+      if (this.brmasker.phoneNotDDD) {
+        return this.phoneNotDDDMask(formValue);
+      }
       if (this.brmasker.person) {
         return this.peapollMask(formValue);
       }
@@ -244,6 +251,30 @@ export class BrMaskDirective implements OnInit {
       this.brmasker.mask = '(99) 9999-9999';
       formValue = formValue.replace(/\D/gi, '');
       formValue = formValue.replace(/(\d{2})(\d)/gi, '$1 $2');
+      formValue = formValue.replace(/(\d{4})(\d)/gi, '$1-$2');
+      formValue = formValue.replace(/(\d{4})(\d)/gi, '$1$2');
+    }
+    return this.onInput(formValue);
+  }
+  /**
+  * Here we have a mask for phone in 8 digits or 9 digits not ddd
+  * @author Antonio Marques <tmowna@gmail.com>
+  * @example <caption>this.phoneMask(string)</caption>
+  * @param {string} value
+  * @returns {string} string phone
+  */
+  private phoneNotDDDMask(value: any): string {
+    let formValue = value;
+    if (formValue.length > 9) {
+      this.brmasker.len = 10;
+      this.brmasker.mask = '99999-9999';
+      formValue = formValue.replace(/\D/gi, '');
+      formValue = formValue.replace(/(\d{5})(\d)/gi, '$1-$2');
+      formValue = formValue.replace(/(\d{4})(\d)/gi, '$1$2');
+    } else {
+      this.brmasker.len = 9;
+      this.brmasker.mask = '9999-9999';
+      formValue = formValue.replace(/\D/gi, '');
       formValue = formValue.replace(/(\d{4})(\d)/gi, '$1-$2');
       formValue = formValue.replace(/(\d{4})(\d)/gi, '$1$2');
     }

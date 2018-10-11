@@ -106,6 +106,14 @@ import { BrMaskerModule } from 'br-mask';
 </ion-item>
 ```
 
+### Example for Phone not ddd 9999-9999 / 99999-9999
+
+```html
+<ion-item>
+	<ion-input type="text" name="phone" formControlName="mask" placeholder="Phone" [brmasker]="{form: form.get('mask'), phoneNotDDD: true}"></ion-input>
+</ion-item>
+```
+
 ### Example for number thousand
 
 ```html
@@ -125,6 +133,7 @@ import { BrMaskerModule } from 'br-mask';
 	len: number;
 	money: boolean;
 	phone: boolean;
+	phoneNotDDD: boolean;
 	person: boolean;
 	percent:boolean;
 	type: 'alfa' | 'num' | 'all';
@@ -144,6 +153,7 @@ import { BrMaskerModule } from 'br-mask';
 | len | string | Optional |
 | money | boolean | Optional |
 | phone | boolean | Optional |
+| phoneNotDDD | boolean | Optional |
 | person | boolean | Optional |
 | percent | boolean | Optional |
 | type | string | Optional default 'all' |
@@ -180,6 +190,10 @@ npm publish
 ```
 
 # Changelog
+
+### 0.0.4
+
+- add phoneNotDDD
 
 ### 0.0.3
 
