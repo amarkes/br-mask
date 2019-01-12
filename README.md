@@ -124,11 +124,11 @@ import { BrMaskerModule } from 'br-mask';
 
 # Features
 ```js
-import { BrMaskerIonic3, BrMaskModel } from 'brmasker-ionic-3';
+import { BrMaskDirective, BrMaskModel } from 'brmasker-ionic-3';
 
 ...
 
-constructor(public brMaskerIonic3: BrMaskerIonic3) {}
+constructor(public brMask: BrMaskDirective) {}
 
 ...
 
@@ -141,7 +141,7 @@ protected createForm(): FormGroup {
 private createPhone(): string {
   const config: BrMaskModel = new BrMaskModel();
   config.phone = true;
-  return this.brMaskerIonic3.writeCreateValue('99999999999', config);
+  return this.brMask.writeCreateValue('99999999999', config);
 }
 ```
 
