@@ -122,6 +122,29 @@ import { BrMaskerModule } from 'br-mask';
 </ion-item>
 ```
 
+# Features
+```js
+import { BrMaskerIonic3, BrMaskModel } from 'brmasker-ionic-3';
+
+...
+
+constructor(public brMaskerIonic3: BrMaskerIonic3) {}
+
+...
+
+protected createForm(): FormGroup {
+  return new FormGroup({
+    phone: new FormControl(this.createPhone())
+  });
+}
+
+private createPhone(): string {
+  const config: BrMaskModel = new BrMaskModel();
+  config.phone = true;
+  return this.brMaskerIonic3.writeCreateValue('99999999999', config);
+}
+```
+
 # Inputs
 
 * brmasker: BrMaskModel
