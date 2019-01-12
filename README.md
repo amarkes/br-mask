@@ -124,7 +124,7 @@ import { BrMaskerModule } from 'br-mask';
 
 # Features
 ```js
-import { BrMaskDirective, BrMaskModel } from 'brmasker-ionic-3';
+import { BrMaskDirective, BrMaskModel } from 'br-mask';
 
 ...
 
