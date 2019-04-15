@@ -16,7 +16,7 @@ export class BrMaskModel {
   thousand: string;
   userCaracters: boolean = false;
   numberAndTousand: boolean = false;
-
+  moneyInitHasInt: boolean = true;
 }
 
 @Directive({
@@ -48,6 +48,9 @@ export class BrMaskDirective implements OnInit {
 
     if (!this.brmasker.decimal) {
       this.brmasker.decimal = 2;
+    }
+    if (this.brmasker.moneyInitHasInt === undefined) {
+      this.brmasker.moneyInitHasInt = true;
     }
 
     if (!this.brmasker.decimalCaracter) {
@@ -324,7 +327,12 @@ export class BrMaskDirective implements OnInit {
     value = value
       .replace(/\D/gi, '')
       .replace(new RegExp('([0-9]{' + decimal + '})$', 'g'), config.decimalCaracter + '$1');
-
+      console.log(value.length)
+      console.log(this.brmasker.moneyInitHasInt)
+    if (value.length === 1 && !this.brmasker.moneyInitHasInt) {
+      const dec = Array(decimal - 1).fill(0);
+      return `0${config.decimalCaracter}${dec.join('')}${value}`;
+    }
     if (value.length === decimal + 1) {
       return '0' + value;
     } else if (value.length > decimal + 2 && value.charAt(0) === '0') {

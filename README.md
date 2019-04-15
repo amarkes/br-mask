@@ -164,7 +164,8 @@ private createPhone(): string {
   	decimalCaracter: string = `,`;
 	thousand: string;
 	userCaracters = false;
-	numberAndTousand: false
+	numberAndTousand: false,
+	moneyInitHasInt: true
 	}
 ```
 
@@ -185,8 +186,10 @@ private createPhone(): string {
 | thousand | string | Optional |
 | userCaracters | boolean | Optional default `false` |
 | numberAndTousand | boolean | Optional default `false` |
+| moneyInitHasInt | boolean | Optional default `true` |
 
 
+`moneyInitHasInt is when you need to use cents in value` 
 
 
 
@@ -211,6 +214,12 @@ npm run build
 ```sh
 npm publish
 ```
+
+# Changelog
+
+### 0.0.5
+
+- add prop moneyInitHasInt
 
 # Changelog
 
