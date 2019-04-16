@@ -327,8 +327,6 @@ export class BrMaskDirective implements OnInit {
     value = value
       .replace(/\D/gi, '')
       .replace(new RegExp('([0-9]{' + decimal + '})$', 'g'), config.decimalCaracter + '$1');
-      console.log(value.length)
-      console.log(this.brmasker.moneyInitHasInt)
     if (value.length === 1 && !this.brmasker.moneyInitHasInt) {
       const dec = Array(decimal - 1).fill(0);
       return `0${config.decimalCaracter}${dec.join('')}${value}`;
