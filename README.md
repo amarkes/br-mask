@@ -39,7 +39,7 @@ import { BrMaskerModule } from 'br-mask';
 ```html
  <form [formGroup]="form">
     <ion-item>
-      <ion-input required type="text" formControlName="mask"  placeholder="First Name" [brmasker]="{form: form.get('mask'), mask:'00-00', len:5, userCaracters: true}"></ion-input>
+      <ion-input required type="text" formControlName="mask"  placeholder="First Name" [brmasker]="{mask:'00-00', len:5, userCaracters: true}"></ion-input>
     </ion-item>
   </form>
 
@@ -49,11 +49,11 @@ import { BrMaskerModule } from 'br-mask';
 
 ```html
 <ion-item>
-    <ion-input type="text" formControlName="mask"  placeholder="Mask" [brmasker]="{form: form.get('mask'), mask: '00:00', type:'num'}"></ion-input>
+    <ion-input type="text" formControlName="mask"  placeholder="Mask" [brmasker]="{mask: '00:00', type:'num'}"></ion-input>
 </ion-item>
 
 <ion-item>
-    <ion-input type="text" formControlName="mask"  placeholder="Mask" [brmasker]="{form: form.get('mask'), userCaracters: true}"></ion-input>
+    <ion-input type="text" formControlName="mask"  placeholder="Mask" [brmasker]="{userCaracters: true}"></ion-input>
 </ion-item>
 
 ```
@@ -62,7 +62,7 @@ import { BrMaskerModule } from 'br-mask';
 
 ```html
 <ion-item>
-	<ion-input type="text" name="cpf" formControlName="mask" placeholder="CPF/CNPJ" [brmasker]="{form: form.get('mask'), person: true}"></ion-input>
+	<ion-input type="text" name="cpf" formControlName="mask" placeholder="CPF/CNPJ" [brmasker]="{person: true}"></ion-input>
 </ion-item>
 ```
 
@@ -70,7 +70,7 @@ import { BrMaskerModule } from 'br-mask';
 
 ```html
 <ion-item>
-	<ion-input type="text" name="money" formControlName="mask" placeholder="(R$) Real" [brmasker]="{form: form.get('mask'), money: true}"></ion-input>
+	<ion-input type="text" name="money" formControlName="mask" placeholder="(R$) Real" [brmasker]="{money: true}"></ion-input>
 </ion-item>
 ```
 
@@ -78,7 +78,7 @@ import { BrMaskerModule } from 'br-mask';
 
 ```html
 <ion-item>
-	<ion-input type="text" formControlName="mask" name="money" placeholder="Money" [brmasker]="{form: form.get('mask'), money: true, thousand: ',',  decimalCaracter: '.', decimal: '3'}"></ion-input> 
+	<ion-input type="text" formControlName="mask" name="money" placeholder="Money" [brmasker]="{money: true, thousand: ',',  decimalCaracter: '.', decimal: '3'}"></ion-input> 
 </ion-item>
 ```
 
@@ -86,7 +86,7 @@ import { BrMaskerModule } from 'br-mask';
 
 ```html
 <ion-item>
-	<ion-input type="text" name="money" formControlName="mask" placeholder="(R$) Real" [brmasker]="{form: form.get('mask'), money: true, decimal: 3}"></ion-input>
+	<ion-input type="text" name="money" formControlName="mask" placeholder="(R$) Real" [brmasker]="{money: true, decimal: 3}"></ion-input>
 </ion-item>
 ```
 
@@ -94,7 +94,7 @@ import { BrMaskerModule } from 'br-mask';
 
 ```html
 <ion-item>
-	<ion-input type="text" name="percent" formControlName="mask" placeholder="% Percent" [brmasker]="{form: form.get('mask'), percent: true}" value=""></ion-input>
+	<ion-input type="text" name="percent" formControlName="mask" placeholder="% Percent" [brmasker]="{percent: true}" value=""></ion-input>
 </ion-item>
 ```
 
@@ -102,7 +102,7 @@ import { BrMaskerModule } from 'br-mask';
 
 ```html
 <ion-item>
-	<ion-input type="text" name="phone" formControlName="mask" placeholder="Phone" [brmasker]="{form: form.get('mask'), phone: true}"></ion-input>
+	<ion-input type="text" name="phone" formControlName="mask" placeholder="Phone" [brmasker]="{phone: true}"></ion-input>
 </ion-item>
 ```
 
@@ -110,7 +110,7 @@ import { BrMaskerModule } from 'br-mask';
 
 ```html
 <ion-item>
-	<ion-input type="text" name="phone" formControlName="mask" placeholder="Phone" [brmasker]="{form: form.get('mask'), phoneNotDDD: true}"></ion-input>
+	<ion-input type="text" name="phone" formControlName="mask" placeholder="Phone" [brmasker]="{phoneNotDDD: true}"></ion-input>
 </ion-item>
 ```
 
@@ -118,7 +118,7 @@ import { BrMaskerModule } from 'br-mask';
 
 ```html
 <ion-item>
-	<ion-input type="text" formControlName="phone" [value]="form.get('phone').value" name="phone" placeholder="Phone" [brmasker]="{form: form.get('phone'), numberAndTousand: true, thousand: ','}"></ion-input>
+	<ion-input type="text" formControlName="phone" [value]="form.get('phone').value" name="phone" placeholder="Phone" [brmasker]="{numberAndTousand: true, thousand: ','}"></ion-input>
 </ion-item>
 ```
 
@@ -149,30 +149,30 @@ private createPhone(): string {
 
 * brmasker: BrMaskModel
 
-```js
+```ts
 	BrMaskModel = {
-	form: FormControl
-	mask: string;
-	len: number;
-	money: boolean;
-	phone: boolean;
-	phoneNotDDD: boolean;
-	person: boolean;
-	percent:boolean;
-	type: 'alfa' | 'num' | 'all';
-	decimal: number = 2;
-  	decimalCaracter: string = `,`;
-	thousand: string;
-	userCaracters = false;
-	numberAndTousand: false,
-	moneyInitHasInt: true
+		form: AbstractControl;
+		mask: string;
+		len: number;
+		money: boolean;
+		phone: boolean;
+		phoneNotDDD: boolean;
+		person: boolean;
+		percent:boolean;
+		type: 'alfa' | 'num' | 'all';
+		decimal: number = 2;
+		decimalCaracter: string = `,`;
+		thousand: string;
+		userCaracters = false;
+		numberAndTousand: false,
+		moneyInitHasInt: true
 	}
 ```
 
 
 | Name | type | info |
 | ------ | ------ | ------ |
-| form | FormControl | Required |
+| form | FormControl | Obsolete |
 | mask | string | Optional |
 | len | string | Optional |
 | money | boolean | Optional |
@@ -216,6 +216,10 @@ npm publish
 ```
 
 # Changelog
+
+### 0.0.7
+
+- removing the need to declare the form
 
 ### 0.0.6
 
