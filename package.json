@@ -1,6 +1,6 @@
 {
   "name": "br-mask",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "mascara para inputs",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -12,12 +12,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/amarkes/br-masker-ionic-3"
+    "url": "git+https://github.com/amarkes/br-mask"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/amarkes/br-masker-ionic-3/issues"
+    "url": "https://github.com/amarkes/br-mask/issues"
   }
 }

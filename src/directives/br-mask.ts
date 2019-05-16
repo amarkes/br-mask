@@ -1,8 +1,8 @@
-import { Directive, Input, OnInit, HostListener, Injectable } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Directive, HostListener, Input, SkipSelf, Host, Optional, ElementRef, Injectable, OnInit } from '@angular/core';
+import { FormControl, FormGroupDirective, AbstractControl } from '@angular/forms';
 
 export class BrMaskModel {
-  form: FormControl;
+  form: AbstractControl;
   mask: string;
   len: number;
   person: boolean;
@@ -25,8 +25,8 @@ export class BrMaskModel {
 
 @Injectable()
 export class BrMaskDirective implements OnInit {
-
   @Input() brmasker: BrMaskModel = new BrMaskModel();
+  @Input() formControlName: string;
 
   /**
   * Event key up in directive
@@ -39,7 +39,11 @@ export class BrMaskDirective implements OnInit {
     this.setValueInFormControl(value);
   }
 
-  constructor() { }
+  constructor(
+    @Optional() @Host() @SkipSelf()
+    private controlContainer: FormGroupDirective,
+    private elementRef: ElementRef
+  ) { }
 
   ngOnInit(): void {
     if (!this.brmasker.type) {
@@ -56,11 +60,20 @@ export class BrMaskDirective implements OnInit {
     if (!this.brmasker.decimalCaracter) {
       this.brmasker.decimalCaracter = ',';
     }
+    if (this.controlContainer) {
+      if (this.formControlName) {
+        this.brmasker.form = this.controlContainer.control.get(this.formControlName);
+      } else {
+        console.warn('Missing FormControlName directive from host element of the component');
+      }
+    } else {
+      console.warn('Can\'t find parent FormGroup directive');
+    }
     this.initialValue();
   }
 
   initialValue(): void {
-    const value: string = this.returnValue(this.brmasker.form.value);
+    const value: string = this.returnValue(this.elementRef.nativeElement.value);
     this.setValueInFormControl(value);
   }
 
@@ -85,6 +98,7 @@ export class BrMaskDirective implements OnInit {
   */
   setValueInFormControl(value: string): void {
     if (!this.verifyFormControl()) {
+      this.elementRef.nativeElement.value = value;
       return;
     }
     this.brmasker.form.setValue(value);
@@ -442,5 +456,4 @@ export class BrMaskDirective implements OnInit {
     }
     return NovoValorCampo;
   }
-
 }
