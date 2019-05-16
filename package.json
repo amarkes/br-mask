@@ -15,7 +15,18 @@
     "url": "git+https://github.com/amarkes/br-mask"
   },
   "keywords": [],
-  "author": "",
+  "author": {
+        "name": "Antonio Marques",
+        "email": "tmowna@gmail.com",
+        "url" : "https://github.com/amarkes"
+    },
+    "contributors": [
+        {
+            "name": "Daniel Pereira",
+            "email": "daniel.prr.azevedo@gmail.com",
+            "url" : "https://github.com/danielprrazevedo"
+        }
+    ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/amarkes/br-mask/issues"
