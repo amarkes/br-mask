@@ -217,6 +217,10 @@ npm publish
 
 # Changelog
 
+### 0.0.8
+
+- change phone mask for accept 11 digits
+
 ### 0.0.7
 
 - removing the need to declare the form
