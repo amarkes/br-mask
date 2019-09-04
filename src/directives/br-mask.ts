@@ -1,5 +1,5 @@
-import { Directive, HostListener, Input, SkipSelf, Host, Optional, ElementRef, Injectable, OnInit } from '@angular/core';
-import { FormControl, FormGroupDirective, AbstractControl } from '@angular/forms';
+import { Directive, ElementRef, Host, HostListener, Injectable, Input, OnInit, Optional, SkipSelf } from '@angular/core';
+import { AbstractControl, FormControl, FormGroupDirective } from '@angular/forms';
 
 export class BrMaskModel {
   form: AbstractControl;
@@ -256,7 +256,7 @@ export class BrMaskDirective implements OnInit {
   */
   private phoneMask(value: any): string {
     let formValue = value;
-    if (formValue.length > 14) {
+    if (formValue.length > 14 || formValue.length === 11) {
       this.brmasker.len = 15;
       this.brmasker.mask = '(99) 99999-9999';
       formValue = formValue.replace(/\D/gi, '');
