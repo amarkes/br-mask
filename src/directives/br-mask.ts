@@ -27,6 +27,7 @@ export class BrMaskModel {
 export class BrMaskDirective implements OnInit {
   @Input() brmasker: BrMaskModel = new BrMaskModel();
   @Input() formControlName: string;
+  @Input() formControl: AbstractControl;
 
   /**
   * Event key up in directive
@@ -66,6 +67,8 @@ export class BrMaskDirective implements OnInit {
       } else {
         console.warn('Missing FormControlName directive from host element of the component');
       }
+    } else if (this.formControl) {
+      this.brmasker.form = this.formControl;
     } else {
       console.warn('Can\'t find parent FormGroup directive');
     }
