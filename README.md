@@ -42,7 +42,10 @@ import { BrMaskerModule } from 'br-mask';
       <ion-input required type="text" formControlName="mask"  placeholder="First Name" [brmasker]="{mask:'00-00', len:5, userCaracters: true}"></ion-input>
     </ion-item>
   </form>
-
+  <!-- Or without form group and formControlName, we can pass the existing formControl directly -->
+    <ion-item>
+      <ion-input required type="text" [formControl]="someExistingFormControl"  placeholder="First Name" [brmasker]="{mask:'00-00', len:5, userCaracters: true}"></ion-input>
+    </ion-item>
 ```
 
 ### Other Examples
