@@ -209,7 +209,7 @@ export class BrMaskDirective implements OnInit {
       }
 
       if (this.brmasker.money) {
-        return this.moneyMask(this.onInput(formValue), this.brmasker);
+        return this.moneyMask(this.onInput(parseFloat(formValue).toFixed(2)), this.brmasker);
       }
       if (this.brmasker.phone) {
         return this.phoneMask(formValue);
