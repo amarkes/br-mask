@@ -24,5 +24,16 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/catoledow/br-mask/issues"
+  },
+  "dependencies": {
+    "@angular/cli": "8.3.3",
+    "@angular/common": "8.2.5",
+    "@angular/compiler-cli": "8.2.5",
+    "@angular/core": "8.2.5",
+    "@angular/forms": "8.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "12.7.5",
+    "typescript": "3.6.3"
   }
 }
