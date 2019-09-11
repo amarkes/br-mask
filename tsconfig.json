@@ -13,10 +13,8 @@
       "node"
     ]
   },
-  "exclude": [
-    "node_modules",
-    "dist",
-    "scripts"
+  "files": [
+    "src/**/*.ts"
   ],
   "angularCompilerOptions": {
     "genDir": "aot"
