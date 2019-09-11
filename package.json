@@ -9,7 +9,7 @@
     "build": "rm -rf aot dist && npm run ngc",
     "submit": "npm run build && npm publish",
     "submitGit": "git push --all && git push --tags && npm run build && npm publish",
-    "postinstall": "npm run build"
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
