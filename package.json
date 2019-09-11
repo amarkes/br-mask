@@ -5,10 +5,11 @@
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "scripts": {
-    "ngc": "ngc",
+    "ngc": "tsc",
     "build": "rm -rf aot dist && npm run ngc",
     "submit": "npm run build && npm publish",
-    "submitGit": "git push --all && git push --tags && npm run build && npm publish"
+    "submitGit": "git push --all && git push --tags && npm run build && npm publish",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
@@ -17,8 +18,8 @@
   "keywords": [],
   "author": {
     "name": "Carlos Toledo",
-      "email": "carlos.ca.toledo@gmail.com",
-      "url": "https://github.com/catoledow"
+    "email": "carlos.ca.toledo@gmail.com",
+    "url": "https://github.com/catoledow"
   },
   "license": "MIT",
   "bugs": {
