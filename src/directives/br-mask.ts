@@ -2,21 +2,21 @@ import { Directive, ElementRef, Host, HostListener, Injectable, Input, OnInit, O
 import { AbstractControl, FormControl, FormGroupDirective } from '@angular/forms';
 
 export class BrMaskModel {
-  form: AbstractControl;
-  mask: string;
-  len: number;
-  person: boolean;
-  phone: boolean;
-  phoneNotDDD: boolean;
-  money: boolean;
-  percent: boolean;
-  type: 'alfa' | 'num' | 'all' = 'alfa';
-  decimal: number = 2;
-  decimalCaracter: string = `,`;
-  thousand: string;
-  userCaracters: boolean = false;
-  numberAndTousand: boolean = false;
-  moneyInitHasInt: boolean = true;
+  form?: AbstractControl;
+  mask?: string;
+  len?: number;
+  person?: boolean;
+  phone?: boolean;
+  phoneNotDDD?: boolean;
+  money?: boolean;
+  percent?: boolean;
+  type?: 'alfa' | 'num' | 'all' = 'alfa';
+  decimal?: number = 2;
+  decimalCaracter?: string = `,`;
+  thousand?: string;
+  userCaracters?: boolean = false;
+  numberAndTousand?: boolean = false;
+  moneyInitHasInt?: boolean = true;
 }
 
 @Directive({
