@@ -1,3 +1,6 @@
+### deprecated
+- I no longer have the maintenance for this project, in case anyone wants to take over just contact me
+
 # brmasker-ionic
 
 [![GitHub issues](https://img.shields.io/github/issues/amarkes/br-mask.svg)](https://github.com/amarkes/br-mask/issues)
