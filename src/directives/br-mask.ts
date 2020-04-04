@@ -38,6 +38,12 @@ export class BrMaskDirective implements OnInit {
     const value: string = this.returnValue(event.target.value);
     this.setValueInFormControl(value);
   }
+  @HostListener('ngModelChange', ['$event']) onNgModelChange(e: any) { 
+    const value: string = this.returnValue(e); 
+    if (value) { 
+      this.setValueInFormControl(value); 
+    } 
+  }
 
   constructor(
     @Optional() @Host() @SkipSelf()
@@ -232,6 +238,24 @@ export class BrMaskDirective implements OnInit {
     }
   }
 
+  applyCpfMask(formValue: string) {
+    formValue = formValue.replace(/\D/gi, '');
+    formValue = formValue.replace(/(\d{3})(\d)/gi, '$1.$2');
+    formValue = formValue.replace(/(\d{3})(\d)/gi, '$1.$2');
+    formValue = formValue.replace(/(\d{3})(\d{1,2})$/gi, '$1-$2');
+    return formValue;
+  }
+
+  applyCnpjMask(formValue: string) {
+    formValue = formValue.replace(/\D/gi, '');
+    formValue = formValue.replace(/(\d{2})(\d)/gi, '$1.$2');
+    formValue = formValue.replace(/(\d{3})(\d)/gi, '$1.$2');
+    formValue = formValue.replace(/(\d{3})(\d)/gi, '$1/$2');
+    formValue = formValue.replace(/(\d{4})(\d{1,4})$/gi, '$1-$2');
+    formValue = formValue.replace(/(\d{2})(\d{1,2})$/gi, '$1$2');
+    return formValue;
+  }
+
   /**
   * Here we have a mask for percentage
   * @author Antonio Marques <tmowna@gmail.com>
@@ -306,23 +330,22 @@ export class BrMaskDirective implements OnInit {
   * @returns {string} string ID
   */
   private peapollMask(value: any): string {
+
     let formValue = value;
-    if (formValue.length > 14) {
-      this.brmasker.len = 18;
-      this.brmasker.mask = '99.999.999/9999-99';
-      formValue = formValue.replace(/\D/gi, '');
-      formValue = formValue.replace(/(\d{2})(\d)/gi, '$1.$2');
-      formValue = formValue.replace(/(\d{3})(\d)/gi, '$1.$2');
-      formValue = formValue.replace(/(\d{3})(\d)/gi, '$1/$2');
-      formValue = formValue.replace(/(\d{4})(\d{1,4})$/gi, '$1-$2');
-      formValue = formValue.replace(/(\d{2})(\d{1,2})$/gi, '$1$2');
+    if (formValue.length >= 14) {
+      if (formValue.length === 14 && formValue.indexOf('-') > 0) {
+        this.brmasker.len = 14;
+        this.brmasker.mask = '999.999.999-99';
+        formValue = this.applyCpfMask(formValue);
+      } else {
+        this.brmasker.len = 18;
+        this.brmasker.mask = '99.999.999/9999-99';
+        formValue = this.applyCnpjMask(formValue);
+      }
     } else {
       this.brmasker.len = 14;
       this.brmasker.mask = '999.999.999-99';
-      formValue = formValue.replace(/\D/gi, '');
-      formValue = formValue.replace(/(\d{3})(\d)/gi, '$1.$2');
-      formValue = formValue.replace(/(\d{3})(\d)/gi, '$1.$2');
-      formValue = formValue.replace(/(\d{3})(\d{1,2})$/gi, '$1-$2');
+      formValue = this.applyCpfMask(formValue);
     }
     return this.onInput(formValue);
   }
