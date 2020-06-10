@@ -38,12 +38,6 @@ export class BrMaskDirective implements OnInit {
     const value: string = this.returnValue(event.target.value);
     this.setValueInFormControl(value);
   }
-  @HostListener('ngModelChange', ['$event']) onNgModelChange(e: any) { 
-    const value: string = this.returnValue(e); 
-    if (value) { 
-      this.setValueInFormControl(value); 
-    } 
-  }
 
   constructor(
     @Optional() @Host() @SkipSelf()
