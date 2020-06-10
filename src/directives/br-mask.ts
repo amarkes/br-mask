@@ -38,11 +38,11 @@ export class BrMaskDirective implements OnInit {
     const value: string = this.returnValue(event.target.value);
     this.setValueInFormControl(value);
   }
-  @HostListener('ngModelChange', ['$event']) onNgModelChange(e: any) { 
-    const value: string = this.returnValue(e); 
-    if (value) { 
-      this.setValueInFormControl(value); 
-    } 
+  @HostListener('ngModelChange', ['$event']) onNgModelChange(e: any) {
+    const value: string = this.returnValue(e);
+    if (value) {
+      this.setValueInFormControl(value, false);
+    }
   }
 
   constructor(
@@ -102,12 +102,12 @@ export class BrMaskDirective implements OnInit {
   * @author Antonio Marques <tmowna@gmail.com>
   * @example <caption>this.setValueInFormControl(string)</caption>
   */
-  setValueInFormControl(value: string): void {
+  setValueInFormControl(value: string, emitViewToModelChange?: boolean): void {
     if (!this.verifyFormControl()) {
       this.elementRef.nativeElement.value = value;
       return;
     }
-    this.brmasker.form.setValue(value);
+    this.brmasker.form.setValue(value, { emitViewToModelChange });
     this.brmasker.form.updateValueAndValidity();
   }
 
