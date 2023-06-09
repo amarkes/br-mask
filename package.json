@@ -1,6 +1,6 @@
 {
   "name": "br-mask",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "mascara para inputs",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -16,17 +16,22 @@
   },
   "keywords": [],
   "author": {
-        "name": "Antonio Marques",
-        "email": "tmowna@gmail.com",
-        "url" : "https://github.com/amarkes"
+    "name": "Antonio Marques",
+    "email": "tmowna@gmail.com",
+    "url": "https://github.com/amarkes"
+  },
+  "contributors": [
+    {
+      "name": "Daniel Pereira",
+      "email": "daniel.prr.azevedo@gmail.com",
+      "url": "https://github.com/danielprrazevedo"
     },
-    "contributors": [
-        {
-            "name": "Daniel Pereira",
-            "email": "daniel.prr.azevedo@gmail.com",
-            "url" : "https://github.com/danielprrazevedo"
-        }
-    ],
+    {
+      "name": "Anderson Pereira",
+      "email": "anderson.s.pereira008@gmail.com",
+      "url": "https://github.com/andershow09"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/amarkes/br-mask/issues"
