@@ -1,5 +1,5 @@
 {
-  "name": "@andershow09/br-mask",
+  "name": "br-mask",
   "version": "0.0.11",
   "description": "mascara para inputs",
   "main": "./dist/index.js",
@@ -7,7 +7,7 @@
   "scripts": {
     "ngc": "ngc",
     "build": "rm -rf aot dist && npm run ngc",
-    "submit": "npm run build && npm publish --access public",
+    "submit": "npm run build && npm publish",
     "submitGit": "git push --all && git push --tags && npm run build && npm publish"
   },
   "repository": {
